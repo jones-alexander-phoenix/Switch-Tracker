@@ -7,7 +7,7 @@ from datetime import datetime
 import random
 import configparser
 
-#Sites of Interest!!
+#Sites of Interest
 sites = ['https://www.bestbuy.com/site/nintendo-switch-32gb-console-neon-red-neon-blue-joy-con/6364255.p?skuId=6364255',
          'https://www.bestbuy.com/site/nintendo-switch-32gb-console-gray-joy-con/6364253.p?skuId=6364253',
          'https://www.bestbuy.com/site/nintendo-switch-animal-crossing-new-horizons-edition-32gb-console-multi/6401728.p?skuId=6401728',
@@ -19,7 +19,6 @@ sites = ['https://www.bestbuy.com/site/nintendo-switch-32gb-console-neon-red-neo
 headers = {'User-Agent': 'Mozilla/5.0'}
 session = requests.Session()
 
-
 def open_site(site, headers, session):
     time.sleep(2)
     r = session.get(site, headers=headers)
@@ -28,7 +27,6 @@ def open_site(site, headers, session):
         check_site(content, site)
     else:
         print(f"Connection Failed. Status Code: {r.status_code}")
-
 
 def check_site(content, site):
     soup = BeautifulSoup(content, 'html.parser')
@@ -60,11 +58,9 @@ def check_site(content, site):
         print("Not here")
         print(datetime.now())
 
-
 def find_switch(websites, headers, session):
     for website in websites:
         open_site(website, headers, session)
-
 
 schedule.every(random.randint(17, 27)).seconds.do(find_switch, sites, headers, session)
 
