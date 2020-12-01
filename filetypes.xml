@@ -4,6 +4,7 @@
     <extensionMap>
       <mapping pattern=".env" type="GitIgnore file" />
       <mapping pattern="hosts" type="Native" />
+      <mapping ext="index" type="PLAIN_TEXT" />
     </extensionMap>
   </component>
 </application>
